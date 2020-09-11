@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import BoxenContext from './contexts/BoxenContext';
+import BoxWrapper from './components/BoxWrapper';
+import FormWrapper from './components/FormWrapper';
+
+
+
 import './App.css';
 
 function App() {
+  const [boxen,setBoxen] = useState([]);
+  const [color,setColor] = useState("");
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //create provider. shortform for key value pairs
+    <BoxenContext.Provider value={{color, setColor, boxen, setBoxen}}> 
+      <FormWrapper />  
+      <BoxWrapper />
+    </BoxenContext.Provider>
   );
 }
 
